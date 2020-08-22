@@ -1,0 +1,8 @@
+#!/bin/bash
+modprobe zram
+num_cpu=$(grep -c processor /proc/cpuinfo)
+mem=$(grep MemTotal /proc/meminfo | grep -E --only-matching '[[:digit:]]+')
+device="$(zramctl -a zstd -f -t $num_cpu -s $((${mem} / 1024))M )"
+echo $device
+mkswap $device
+swapon $device
