@@ -4,8 +4,8 @@ After=multi-user.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/sbin/zramswapenable
-ExecStop=/usr/local/sbin/zramswapdisable
+ExecStart=/bin/bash /usr/local/sbin/zramswapenable
+ExecStop=/bin/bash /usr/local/sbin/zramswapdisable
 RemainAfterExit=yes
 
 [Install]
