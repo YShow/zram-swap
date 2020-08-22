@@ -1,0 +1,12 @@
+[Unit]
+Description=Service enabling compressing RAM with zram zstd
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/zramswapenable
+ExecStop=/usr/local/sbin/zramswapdisable
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target 
